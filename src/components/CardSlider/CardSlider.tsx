@@ -8,9 +8,13 @@ import { ICardSlider } from "../../interfaces";
 
 type CardSliderProps = {
   iconBg?: string;
+  imgHeight?: string;
 };
 
-const CardSlider: React.FC<CardSliderProps> = ({ iconBg = "bg-[#f5f3ec]" }) => {
+const CardSlider: React.FC<CardSliderProps> = ({
+  iconBg = "bg-[#f5f3ec]",
+  imgHeight = "md:h-[440px] h-[220px]",
+}) => {
   const [slideToShow, setSlideToShow] = useState<number>(3);
   const [isCentered, setIsCentered] = useState<boolean>(true);
   const [activeSlide, setActiveSlide] = useState<number>(0);
@@ -118,7 +122,7 @@ const CardSlider: React.FC<CardSliderProps> = ({ iconBg = "bg-[#f5f3ec]" }) => {
       return (
         <React.Fragment key={`${item.id}${index}`}>
           <div className="px-5 lg:w-[440px] md:w-[600px] w-[320px]">
-            <div className="w-full md:h-[440px] h-[220px] mb-12">
+            <div className={cn("w-full mb-12", imgHeight)}>
               <img
                 src={item.sliderImg}
                 alt=""
